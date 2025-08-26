@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 const studentRoutes = require('./routes/studentRoutes');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://candidate-seat-allocation.netlify.app/'],
+    credentials: true
+}));
 const PORT = process.env.PORT || 5000;
 const mongo_uri = process.env.MONGO_URI;
 

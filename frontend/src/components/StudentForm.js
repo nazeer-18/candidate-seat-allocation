@@ -5,10 +5,11 @@ const StudentForm = () => {
     const [rollNo, setRollNo] = useState('');
     const [studentDetails, setStudentDetails] = useState(null);
     const [error, setError] = useState('');
+    const API_URL = 'https://candidate-seat-allocation.onrender.com';
 
     const fetchStudentDetails = async () => {
         try {
-            const res = await fetch(`http://localhost:8000/api/get-student/${rollNo}`);
+            const res = await fetch(`${API_URL}/api/get-student/${rollNo}`);
             if (res.status === 404) {
                 setStudentDetails(null);
                 setError('User does not exist');
@@ -24,7 +25,7 @@ const StudentForm = () => {
 
     const allotSeat = async () => {
         try {
-            const res = await fetch(`http://localhost:8000/api/allot-seat`, {
+            const res = await fetch(`${API_URL}/api/allot-seat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
